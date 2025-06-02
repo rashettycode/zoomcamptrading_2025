@@ -5,7 +5,7 @@ In this homework, we're going to download finance data from various sources and 
 ---
 ### Question 1: [Index] S&P 500 Stocks Added to the Index
 
-**Which year had the highest number of additions?**
+**Which year had the highest number of additions?**  
 
 Using the list of S&P 500 companies from Wikipedia's [S&P 500 companies page](https://en.wikipedia.org/wiki/List_of_S%26P_500_companies), download the data including the year each company was added to the index.
 
