@@ -8,18 +8,6 @@ If not stated otherwise, please use the [LINK](https://github.com/DataTalksClub/
 ### Question 1: tbd
 
 
-#### Steps:
-
-1. Using the same approach as in Question 1, download the IPOs in 2024 from:  
-   [https://stockanalysis.com/ipos/2024/](https://stockanalysis.com/ipos/2024/)  
-   Filter to keep only those IPOs **before 1 June 2024** (first 5 months of 2024).  
-   ➤ You should have **75 tickers**.
-
-2.  Use **Code Snippet 7** to download daily stock data for those tickers (via `yfinance`).  
-   Make sure you understand how `growth_1d` ... `growth_365d`, and volatility columns are defined.  
-   Define a new column `growth_252d` representing growth after **252 trading days** (~1 year), in addition to any other growth periods you already track.
-
-
 3. Calculate the Sharpe ratio assuming a risk-free rate of **4.5%**:
 
    ```python
