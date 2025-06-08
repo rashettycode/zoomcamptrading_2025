@@ -7,18 +7,6 @@ If not stated otherwise, please use the [LINK](https://github.com/DataTalksClub/
 ---
 ### Question 1: tbd
 
-**Q1 tbd?**
-
-text_tbd
-
----
-### Question 2:   [IPO] Median Sharpe Ratio for 2024 IPOs (First 5 Months)
-
-
-**What is the median Sharpe ratio (as of 6 June 2025) for companies that went public in the first 5 months of 2024?**
-
-The goal is to replicate the large-scale `yfinance` OHLCV data download and perform basic financial calculations on IPO stocks.
-
 
 #### Steps:
 
