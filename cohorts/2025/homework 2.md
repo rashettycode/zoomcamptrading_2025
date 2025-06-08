@@ -5,36 +5,12 @@ In this homework, we're going to combine data from various sources to process it
 If not stated otherwise, please use the [LINK](https://github.com/DataTalksClub/stock-markets-analytics-zoomcamp/blob/main/02-dataframe-analysis/%5B2025%5D_Module_02_Colab_Working_with_the_data.ipynb) covered at the livestream to re-use the code snippets.
 
 ---
-### Question 1: [IPO] Withdrawn IPOs by Company Type
+### Question 1: tbd
 
-**What is the total withdrawn IPO value (in $ millions) for the company class with the highest total withdrawal value?**
+**Q1 tbd?**
 
-From the withdrawn IPO list ([stockanalysis.com/ipos/withdrawn](https://stockanalysis.com/ipos/withdrawn/)), collect and process the data to find out which company type saw the most withdrawn IPO value.
+text_tbd
 
-#### Steps:
-1. Use `pandas.read_html()` with the URL above to load the IPO withdrawal table into a DataFrame. 
-   *It is a similar process to Code Snippet 1 discussed at the livestream.*    You should get **99 entries**. 
-2. Create a new column called `Company Class`, categorizing company names based on patterns like:
-   - “Acquisition Corp” or “Acquisition Corporation” → `Acq.Corp`
-   - “Inc” or “Incorporated” → `Inc`
-   - “Group” → `Group`
-   - “Ltd” or “Limited” → `Limited`
-   - “Holdings” → `Holdings`
-   - Others → `Other`
-
-  *  Order: Please follow the listed order of classes and assign the first matched value (e.g., for 'shenni holdings limited', you assign the 'Limited' class).
-
-  * Hint: make your function more robust by converting names to lowercase and splitting into words before matching patterns.
-
-3. Define a new field `Avg. price` by parsing the `Price Range` field (create a function and apply it to the `Price Range` column). Examples:
-   - '$8.00-$10.00' → `9.0`  
-   - '$5.00' → `5.0`  
-   - '-' → `None`
-4. Convert `Shares Offered` to numeric, clean missing or invalid values.
-5. Create a new column:  
-   `Withdrawn Value = Shares Offered * Avg Price` (**71 non-null values**)
-6. Group by `Company Class` and calculate total withdrawn value.
-7. **Answer**: Which class had the highest **total** value of withdrawals?
 ---
 ### Question 2:   [IPO] Median Sharpe Ratio for 2024 IPOs (First 5 Months)
 
