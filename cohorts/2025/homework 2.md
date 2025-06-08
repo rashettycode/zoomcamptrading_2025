@@ -148,58 +148,41 @@ Apply a simple rule-based trading strategy using the **Relative Strength Index (
 
 #### Steps:
 
-1. **Run the full notebook from Lecture 2 (33 stocks)**  
-   - Ensure you can generate the merged DataFrame containing:  
-     - OHLCV data  
-     - Technical indicators  
-     - Macro indicators  
-   - Focus on getting **RSI** computed using **Code Snippets 8 and 9**.  
-   - This process is essential and will help during the capstone project.
+1. **Start from the existing DataFrame** from Question 2 (75 tickers from IPOs in the first 5 months of 2024).  
 
-2. ⚠️ **IMPORTANT** Please use this file to solve the Home Assignment (**all next steps**)
- 
-   Download precomputed data using this snippet:
+   Add **12 new columns**:  
+   `future_growth_1m`, `future_growth_2m`, ..., `future_growth_12m`  
+   *(Assume 1 month = 21 trading days, so growth is calculated over 21, 42, ..., 252 trading days)*  
+   This logic is similar to `historyPrices['growth_future_30d']` from **Code Snippet 7**, but extended to longer timeframes.
 
-   ```python
-   import gdown
-   import pandas as pd
+2. **Determine the first trading day** (`min_date`) for each ticker.  
+   This is the earliest date in the data for each stock.
 
-   file_id = "1grCTCzMZKY5sJRtdbLVCXg8JXA8VPyg-"
-   gdown.download(f"https://drive.google.com/uc?id={file_id}", "data.parquet", quiet=False)
-   df = pd.read_parquet("data.parquet", engine="pyarrow")
+3. **Join the data**:  
+   Perform an **inner join** between the `min_date` DataFrame and the future growth data on both `ticker` and `date`.  
+   ➤ You should end up with **75 records** (one per IPO) with all 12 `future_growth_...` fields populated.
 
-3. **RSI Strategy Setup:**  
-   - RSI is already available in the dataset as a field.  
-   - The threshold for **oversold** is defined as `RSI < 25`.
+4. **Compute descriptive statistics** for the resulting DataFrame:  
+   Use `.describe()` or similar to analyze each of the 12 columns:  
+   - `future_growth_1m`  
+   - `future_growth_2m`  
+   - ...  
+   - `future_growth_12m`  
 
-4. **Filter the dataset by RSI and date:**  
-   ```python
-   rsi_threshold = 25
-   selected_df = df[
-       (df['rsi'] < rsi_threshold) &
-       (df['Date'] >= '2000-01-01') &
-       (df['Date'] <= '2025-06-01')
-   ]
-5. **Calculate Net Profit Over 25 Years:**  
-   - Total number of trades: **1568**  
-   - For each trade, you invest **$1000**  
-   - Use the 30-day forward return (`growth_future_30d`) to compute net earnings:  
-     ```python
-     net_income = 1000 * (selected_df['growth_future_30d'] - 1).sum()
-     ```
+5. **Determine the best holding period**:  
+   - Find the number of months **(1 to 12)** where the **average (mean)** future growth is **maximal**.  
+   - This optimal month shows an uplift of **>1%** compared to all others.  
+   - Still, the average return remains **less than 1** (i.e., expected return is less than doubling your investment).
 
-   - **Final Answer:**  
-     What is the **net income in $K** (i.e., in thousands of dollars) that could be earned using this RSI-based oversold strategy from 2000–2025?
+
 ---
-### Q5. [Exploratory, Optional] Predicting a Positive-Return IPO
+### Question 4: tnd
 
-Most of the strategies for investing in IPOs deliver **negative average and median returns** (and even 75% quantiles).
+**Q4 tbd?**
 
-**Question:**  
-How would you change the strategy if you want to **increase the profitability**?
 
-> This is an open-ended brainstorming question — propose ideas for identifying IPOs with positive future returns or building a more effective trading strategy.
-     
+text_tbd
+
 ---
 ## Submitting the solutions
 
