@@ -55,11 +55,11 @@ Investigate whether holding an IPO stock for a fixed number of months after its 
    - “Acquisition Corp” or “Acquisition Corporation” → `Acq.Corp`
    - “Inc” or “Incorporated” → `Inc`
    - “Group” → `Group`
+   - “Ltd” or “Limited” → `Limited`
    - “Holdings” → `Holdings`
-   - “Ltd” or “Limited” → `Ltd`
    - Others → `Other`
 
-1. **Start from the existing DataFrame** from Question 2 (75 tickers from IPOs in the first 5 months of 2024).  
+  * Hint: make your function more robust by converting names to lowercase and splitting into words before matching patterns.
 
    Add **12 new columns**:  
    `future_growth_1m`, `future_growth_2m`, ..., `future_growth_12m`  
