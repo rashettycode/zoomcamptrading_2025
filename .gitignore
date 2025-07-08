@@ -25,3 +25,6 @@ echo "requirements.txt" >> .gitignore
 echo "test_pmdarima.py" >> .gitignore
 
 
+03-modeling/1.25.2/
+03-modeling/4.2.0/
+test_pmdarima.py
