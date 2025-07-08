@@ -1,3 +1,22 @@
 02-dataframe-analysis/data.parquet
 02-dataframe-analysis/stocks_df_combined_2025_06_20.parquet.brotli
+# Ignore all Parquet and Brotli-compressed Parquet files
+*.parquet
+*.parquet.brotli
+
+# Ignore virtual environments
+.venv/
+
+# Ignore Python cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore version folders accidentally saved
+03-modeling/1.25.2/
+03-modeling/4.2.0/
+
+# Jupyter checkpoint files
+.ipynb_checkpoints/
 
