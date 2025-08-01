@@ -1,6 +1,13 @@
 ## Module 3 Homework (2025 Cohort)
 
-In this homework, we're going to work with categorical variables, first ML models (Decision Trees), and hyperparameter tuning.
+In this homework, we’ll work with categorical variables, build our first machine learning models (Decision Trees), and perform hyperparameter tuning.
+
+💡 Your goal is to read through the provided code and make slight extensions. Specifically:
+- Add more columns to the dataframe.
+- Define new “handcrafted” rules to predict growth.
+- Analyze whether the ML model produces **unique** predictions (i.e., cases where only the ML model is correct compared to other “hand” rules).
+- Tune the Decision Tree by optimizing its complexity (i.e., the **depth** hyperparameter).
+
 
 Please use the [Colab Module 3](https://github.com/DataTalksClub/stock-markets-analytics-zoomcamp/blob/main/03-modeling/%5B2025%5D_Module_3_Colab_Time_Series_Modeling.ipynb) for all tasks to ensure you have the same dataframe used for the Modeling part, as covered during the lecture. 
 
@@ -63,12 +70,14 @@ In this task, you'll apply insights from the **visualized decision tree (`clf10`
 1. **Define two new 'hand' rules** based on branches that lead to 'positive' predictions in the tree:
    - `pred3_manual_dgs10_5`:  
      ```python
-     (DGS10 <= 4.825) & (DGS5 <= 0.745)
+     (DGS10 <= 4) & (DGS5 <= 1)
      ```
    - `pred4_manual_dgs10_fedfunds`:  
      ```python
-     (DGS10 > 4.825) & (FEDFUNDS <= 4.795)
+     (DGS10 > 4) & (FEDFUNDS <= 4.795)
      ```
+   > **Hint**: This is not exactly the same condition as in the estimated tree (original: `(DGS10 <= 4.825) & (DGS5 <= 0.745)`; `(DGS10 > 4.825) & (FEDFUNDS <= 4.795)`), since in that case, there are no true positive predictions for both variables. Consider why this might be the case.
+
 
 2. **Extend Code Snippet 3** (Manual "hand rule" predictions):  
    - Implement and apply the above two rules (`pred3`, `pred4`) to your dataset.
@@ -79,6 +88,7 @@ In this task, you'll apply insights from the **visualized decision tree (`clf10`
    - Use standard precision metrics (`TP / (TP + FP)`).
    - Round the precision score to **three decimal places**.  
      Example: If your result is `0.57897`, your final answer should be: `0.579`.
+  > **Hint**: This should already be visible in the code output, as the `IS_CORRECT` and `PREDICTIONS` sets should automatically include the new columns.
 
 
 
@@ -100,6 +110,9 @@ clf = DecisionTreeClassifier(max_depth=max_depth, random_state=42)
 - Fit the classifier on the combined TRAIN and VALIDATION datasets.
 - Use the trained model to predict on the entire dataset (TRAIN + VALIDATION + TEST).
 - Store these predictions in a new column named `pred5_clf_10` within your main dataframe.
+- **Hint**: When predicting on the entire dataset, it's easy to join the predictions with the full DataFrame, since the number of records and their order remain the same. You will need to define X_all and y_all and apply the same cleaning steps used previously for X_train, y_train, X_test, and y_test. This makes it straightforward to define a new column, for example:  
+  ```python
+  df['pred5_clf_10'] = <predictions vector from clf10.predict(X_all)>
 
 #### Step 2: Identify Unique Correct Predictions by `pred5_clf_10`
 
